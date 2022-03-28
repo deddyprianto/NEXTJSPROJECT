@@ -9,12 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@reduxjs/toolkit": "^1.8.0",
+    "axios": "^0.26.1",
     "next": "12.1.1",
+    "next-fonts": "^1.5.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-awesome-shapes": "^0.1.12",
+    "react-burger-menu": "^3.0.6",
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.6",
+    "react-tracked": "^1.7.8",
+    "redux-persist": "^6.0.0",
+    "rgt": "^1.0.7",
+    "swr": "^1.2.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.4",
     "eslint": "8.12.0",
-    "eslint-config-next": "12.1.1"
+    "eslint-config-next": "12.1.1",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
   }
 }
