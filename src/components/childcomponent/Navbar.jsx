@@ -4,17 +4,29 @@ import { MenuAlt2Icon } from "@heroicons/react/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { actionsMenu } from "features/rootapp/appSlice";
 import { createTrackedSelector } from "react-tracked";
+import { actionsMenuModal } from "features/rootapp/appModal";
 const useTrackedSelector = createTrackedSelector(useSelector);
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const state = useTrackedSelector();
-  const menu = state;
+  const modal = state.modal.modal;
+  const menu = state.app.menu;
   console.log(menu);
+  console.log(modal);
   return (
     <div className="w-full h-full grid grid-cols-2">
-      <button onClick={() => dispatch(actionsMenu(true))}>
+      <button
+        className="mt-10 bg-blue-200 w-20 h-20"
+        onClick={() => dispatch(actionsMenu(true))}
+      >
         Press To persist
+      </button>
+      <button
+        className="mt-10 bg-blue-200 w-20 h-20"
+        onClick={() => dispatch(actionsMenuModal(true))}
+      >
+        Press noT persist
       </button>
       <div className="w-full flex items-center lg:justify-center justify-end ">
         <div className="w-1/2 flex items-center text-gray-100">

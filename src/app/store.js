@@ -1,4 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
+import appModal from "features/rootapp/appModal";
+import appSlice from "features/rootapp/appSlice";
 import {
   persistReducer,
   FLUSH,
@@ -9,7 +11,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import appSlice from "features/rootapp/appSlice";
 
 const createNoopStorage = () => {
   return {
@@ -28,16 +29,20 @@ const storage =
   typeof window !== "undefined"
     ? createWebStorage("local")
     : createNoopStorage();
-
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
+  blacklist: ["modal"],
 };
-const persistedReducer = persistReducer(persistConfig, appSlice);
+const persistedReducerApp = persistReducer(persistConfig, appSlice);
+const persistedReducerModal = persistReducer(persistConfig, appModal);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    app: persistedReducerApp,
+    modal: persistedReducerModal,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
